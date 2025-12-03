@@ -22,13 +22,15 @@
     <!-- DO NOT CHANGE ANYTHING ABOVE THIS LINE-->
 
     <!-- Javascript Framework (e.g., vue.js) (ADD HERE) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
   </head>
 
   <body>
     <div id="vue_app" class="container">
       <div class="header">
         <div class="container">
-          <h1 id="app_title">%title%</h1>
+        <h1 id="app_title">{{ title }}</h1>
         </div>
       </div>
 
@@ -36,8 +38,9 @@
         <div class="row">
           <div class="col-md-6">
             <div class="thumbnail">
-              <img class="poster img-fluid" />
-              <div class="imageInfo">%posterindex%</div>
+              <img class="poster img-fluid" :src="m.posters[m.posterindex]" @click="posterClick(index)" :alt="m.title + ' poster'" />
+              <div class="imageInfo"> Poster {{ m.posterindex + 1 }} of {{ m.posters.length }} </div>
+
 
               <p class="title">%title% (%country%)</p>
               <p class="score">
@@ -53,7 +56,7 @@
                   %likes%
                 </p>
                 <p class="dislikes">
-                  <i class="bi bi-hand-thumbs-down"></i> %dislikes%
+                  <i class="bi bi-hand-thumbs-down"></i> %dislikes% 
                 </p>
               </div>
             </div>
